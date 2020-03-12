@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">TuCarro</string>
+    <string name="hi_new_user">¡Hola! Para seguir, ingresa tu\ne-mail o usuario</string>
+    <string name="i_dont_know_my_password">No sé mi clave</string>
+    <string name="create_account">Crear cuenta</string>
+    <string name="next">Continuar</string>
+    <string name="password">Clave</string>
+    <string name="complete_info">Completa tus datos</string>
+    <string name="name">Nombre</string>
+    <string name="email">E-mail</string>
+    <string name="sign_up">Registrarme</string>
 </resources>

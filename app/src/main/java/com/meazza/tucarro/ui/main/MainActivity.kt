@@ -1,7 +1,8 @@
-package com.meazza.tucarro
+package com.meazza.tucarro.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.meazza.tucarro.R
 
 class MainActivity : AppCompatActivity() {
 
