@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "437885508055",
+    "firebase_url": "https://tucarro-f2e9b.firebaseio.com",
+    "project_id": "tucarro-f2e9b",
+    "storage_bucket": "tucarro-f2e9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437885508055:android:8816c4667d3445f888d392",
+        "android_client_info": {
+          "package_name": "com.meazza.tucarro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437885508055-m1g187b3fpcaqhtphiteoimaai9g7c0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meazza.tucarro",
+            "certificate_hash": "91c33d77034a77c2244cbabb8771b01e53b827f3"
+          }
+        },
+        {
+          "client_id": "437885508055-fdbc2vl183fi5sembmi1m69eail8n7r4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIcHIoyd15VQyutggu_4PoIreE_n1yh84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437885508055-fdbc2vl183fi5sembmi1m69eail8n7r4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
