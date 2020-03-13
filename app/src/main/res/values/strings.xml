@@ -9,4 +9,6 @@
     <string name="name">Nombre</string>
     <string name="email">E-mail</string>
     <string name="sign_up">Registrarme</string>
+    <string name="verification_code">"Te enviaremos un código de verificación a tu correo "</string>
+    <string name="send_code">Enviar código</string>
 </resources>
