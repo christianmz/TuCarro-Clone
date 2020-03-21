@@ -9,6 +9,19 @@
     <string name="name">Nombre</string>
     <string name="email">E-mail</string>
     <string name="sign_up">Registrarme</string>
-    <string name="verification_code">"Te enviaremos un código de verificación a tu correo "</string>
+    <string name="recover_email">Te enviaremos un email para que puedas cambiar tu clave</string>
+    <string name="verification_email">Te enviamos un email de verificación a tu correo</string>
+    <string name="confirm_email">Confirma tu email para continuar</string>
     <string name="send_code">Enviar código</string>
+    <string name="email_hasnt_been_sent">No se pudo enviar email de confirmación</string>
+    <string name="error">Hubo un error, intenta nuevamente</string>
+    <string name="empty_fields">Hay campos vacios, llena todos para continuar</string>
+    <string name="invalid_email">Utiliza un e-mail válido</string>
+    <string name="invalid_password">La clave debe tener; al menos 8 carácteres, una mayúscula y una minúscula</string>
+    <string name="email_already_exists">E-mail ya ha sido registrado</string>
+    <string name="registration_error">Hubo un error al registrarte, intenta nuevamente</string>
+    <string name="user_not_found">"Lo sentimos, tu usuario no fue encontrado</string>
+    <string name="wrong_password">Clave incorrecta</string>
+    <string name="login_error">Hubo un error al ingresar, intenta nuevamente</string>
+    <string name="email_reset_password">Hemos enviado un email para que puedas recuperar tu contraseña</string>
 </resources>

@@ -63,7 +63,7 @@
                 android:fontFamily="@font/lato_regular"
                 android:hint="@string/name"
                 android:inputType="textEmailAddress"
-                android:text="@{viewModel.etNewName}"
+                android:text="@={viewModel.etNewName}"
                 android:textColor="@color/grayDark" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,7 +85,7 @@
                 android:fontFamily="@font/lato_regular"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:text="@{viewModel.etNewEmail}"
+                android:text="@={viewModel.etNewEmail}"
                 android:textColor="@color/grayDark" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,7 +107,7 @@
                 android:fontFamily="@font/lato_regular"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:text="@{viewModel.etNewPassword}"
+                android:text="@={viewModel.etNewPassword}"
                 android:textColor="@color/grayDark" />
         </com.google.android.material.textfield.TextInputLayout>
 

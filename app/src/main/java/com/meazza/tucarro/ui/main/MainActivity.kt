@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         DataBindingUtil
-            .setContentView<ActivityMainBinding>(this, R.layout.activity_login)
+            .setContentView<ActivityMainBinding>(this, R.layout.activity_main)
             .apply {
                 lifecycleOwner = this@MainActivity
                 viewModel = mainViewModel

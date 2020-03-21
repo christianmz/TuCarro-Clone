@@ -11,11 +11,13 @@ import androidx.fragment.app.DialogFragment
 import com.meazza.tucarro.R
 import com.meazza.tucarro.databinding.DialogRecoverPasswordBinding
 import com.meazza.tucarro.ui.auth.AuthListener
+import com.meazza.tucarro.util.INVALID_EMAIL
+import com.meazza.tucarro.util.USER_NOT_FOUND
+import org.jetbrains.anko.support.v4.longToast
 import org.koin.android.ext.android.inject
 
 
-class DialogRecoverPass : DialogFragment(),
-    AuthListener {
+class DialogRecoverPass : DialogFragment(), AuthListener {
 
     private val dialogViewModel by inject<DialogRecoverPassViewModel>()
 
@@ -24,7 +26,7 @@ class DialogRecoverPass : DialogFragment(),
         savedInstanceState: Bundle?
     ): View? {
 
-        dialogViewModel.listener = this
+        dialogViewModel.authListener = this
 
         return inflater.inflate(R.layout.dialog_recover_password, container, false)
     }
@@ -50,8 +52,15 @@ class DialogRecoverPass : DialogFragment(),
     }
 
     override fun onSuccess() {
+        longToast(R.string.email_reset_password)
+        dismiss()
     }
 
-    override fun onFailure(message: String) {
+    override fun onFailure(messageCode: Int) {
+        when (messageCode) {
+            INVALID_EMAIL -> longToast(R.string.invalid_email)
+            USER_NOT_FOUND -> longToast(R.string.user_not_found)
+            else -> longToast(R.string.error)
+        }
     }
 }
