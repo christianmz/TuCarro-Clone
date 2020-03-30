@@ -7,7 +7,7 @@ import com.meazza.tucarro.R
 import com.meazza.tucarro.databinding.ActivityLoginBinding
 import com.meazza.tucarro.ui.ViewListener
 import com.meazza.tucarro.ui.auth.AuthListener
-import com.meazza.tucarro.ui.auth.recover_pass.DialogRecoverPass
+import com.meazza.tucarro.ui.auth.reset_password.DialogResetPassword
 import com.meazza.tucarro.ui.auth.sign_up.SignUpActivity
 import com.meazza.tucarro.ui.main.MainActivity
 import com.meazza.tucarro.util.*
@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity(), AuthListener,
     }
 
     override fun openView() {
-        val dialog = DialogRecoverPass()
+        val dialog = DialogResetPassword()
         dialog.show(supportFragmentManager, "Dialog Recover Password")
     }
 

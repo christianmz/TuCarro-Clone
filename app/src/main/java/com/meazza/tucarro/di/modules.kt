@@ -4,7 +4,7 @@ import com.meazza.tucarro.network.AuthService
 import com.meazza.tucarro.repository.AuthRepository
 import com.meazza.tucarro.repository.MainRepository
 import com.meazza.tucarro.ui.auth.login.LoginViewModel
-import com.meazza.tucarro.ui.auth.recover_pass.DialogRecoverPassViewModel
+import com.meazza.tucarro.ui.auth.reset_password.ResetPasswordViewModel
 import com.meazza.tucarro.ui.auth.sign_up.SignUpViewModel
 import com.meazza.tucarro.ui.main.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -15,7 +15,7 @@ val authModule = module {
     single { AuthRepository(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { SignUpViewModel(get()) }
-    viewModel { DialogRecoverPassViewModel(get()) }
+    viewModel { ResetPasswordViewModel(get()) }
 }
 
 val mainModule = module {
