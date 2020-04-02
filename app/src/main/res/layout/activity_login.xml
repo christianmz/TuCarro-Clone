@@ -99,14 +99,14 @@
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_recover_password"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="@+id/til_new_password"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/til_new_password"
             app:layout_constraintTop_toBottomOf="@+id/til_new_password" />
 
         <Button
-            android:id="@+id/btn_recover_password"
+            android:id="@+id/btn_login"
             style="@android:style/Widget.Material.Light.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -142,10 +142,10 @@
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btn_recover_password"
+            app:layout_constraintEnd_toEndOf="@+id/btn_login"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/btn_recover_password"
-            app:layout_constraintTop_toBottomOf="@+id/btn_recover_password" />
+            app:layout_constraintStart_toStartOf="@+id/btn_login"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -24,4 +24,11 @@
     <string name="wrong_password">Clave incorrecta</string>
     <string name="login_error">Hubo un error al ingresar, intenta nuevamente</string>
     <string name="email_reset_password">Hemos enviado un email para que puedas recuperar tu contraseña</string>
+    <string name="user_photo">User photo</string>
+    <string name="login">Ingresar a TuCarro</string>
+    <string name="home">Inicio</string>
+    <string name="sales">Vender</string>
+    <string name="sign_out">Salir</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
 </resources>
