@@ -1,6 +1,7 @@
 package com.meazza.tucarro.di
 
 import com.meazza.tucarro.network.AuthService
+import com.meazza.tucarro.network.DatabaseConnection
 import com.meazza.tucarro.repository.AuthRepository
 import com.meazza.tucarro.repository.MainRepository
 import com.meazza.tucarro.ui.auth.login.LoginViewModel
@@ -12,13 +13,14 @@ import org.koin.dsl.module
 
 val authModule = module {
     single { AuthService }
-    single { AuthRepository(get()) }
+    single { DatabaseConnection }
+    single { AuthRepository(get(), get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { SignUpViewModel(get()) }
     viewModel { ResetPasswordViewModel(get()) }
 }
 
 val mainModule = module {
-    single { MainRepository() }
+    single { MainRepository(get()) }
     viewModel { MainViewModel(get()) }
 }

@@ -1,6 +1,7 @@
 package com.meazza.tucarro.ui.main
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -14,20 +15,19 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.meazza.tucarro.R
 import com.meazza.tucarro.databinding.ActivityMainBinding
-import com.meazza.tucarro.network.AuthService
 import com.meazza.tucarro.ui.adverts.AdvertsFragment
 import com.meazza.tucarro.ui.auth.login.LoginActivity
 import com.meazza.tucarro.ui.sales.SalesFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var tvUserName: TextView
-    private lateinit var ivUserPhoto: ImageView
-    private lateinit var btnLogin: Button
+    private lateinit var tvName: TextView
+    private lateinit var ivPhoto: ImageView
+    private lateinit var buttonLogin: Button
 
     private val mainViewModel by inject<MainViewModel>()
 
@@ -41,13 +41,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 viewModel = mainViewModel
             }
 
+        setSupportActionBar(tb_main)
+        initialFragment()
         setNavDrawer()
         setNavHeaderViews()
         buttonAction()
-        isUserExist()
-
-        fragmentTransaction(AdvertsFragment())
-        nav_view.menu.getItem(0).isChecked = true
     }
 
     private fun setNavDrawer() {
@@ -60,11 +58,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         ).apply {
             isDrawerIndicatorEnabled = true
             drawer_layout.addDrawerListener(this)
-
             syncState()
         }
-
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    private fun initialFragment() {
+        fragmentTransaction(AdvertsFragment())
+        nav_view.menu.getItem(0).isChecked = true
     }
 
     private fun fragmentTransaction(fragment: Fragment) {
@@ -74,36 +75,42 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun setNavHeaderViews() {
-        tvUserName = nav_view.getHeaderView(0).findViewById(R.id.tv_user_name)
-        ivUserPhoto = nav_view.getHeaderView(0).findViewById(R.id.iv_user_photo)
-        btnLogin = nav_view.getHeaderView(0).findViewById(R.id.btn_login_nav)
+        tvName = nav_view.getHeaderView(0).findViewById(R.id.tv_user_name)
+        ivPhoto = nav_view.getHeaderView(0).findViewById(R.id.iv_user_photo)
+        buttonLogin = nav_view.getHeaderView(0).findViewById(R.id.btn_login_nav)
     }
 
-    private fun isUserExist() {
-        if (AuthService.currentUser == null) {
+    private fun changeVisibility(show: Boolean) {
+        tvName.visibility = if (show) View.VISIBLE else View.GONE
+        ivPhoto.visibility = if (show) View.VISIBLE else View.GONE
+        buttonLogin.visibility = if (show) View.GONE else View.VISIBLE
+    }
+
+    private fun buttonAction() {
+        buttonLogin.setOnClickListener {
+            startActivity<LoginActivity>()
+        }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (mainViewModel.user == null) {
             changeVisibility(false)
         } else {
             changeVisibility(true)
         }
-    }
-
-    private fun changeVisibility(show: Boolean) {
-        tvUserName.visibility = if (show) View.VISIBLE else View.GONE
-        ivUserPhoto.visibility = if (show) View.VISIBLE else View.GONE
-        btnLogin.visibility = if (show) View.GONE else View.VISIBLE
-    }
-
-    private fun buttonAction() {
-        btnLogin.setOnClickListener {
-            startActivity<LoginActivity>()
-        }
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.mn_home -> fragmentTransaction(AdvertsFragment())
             R.id.mn_sales -> fragmentTransaction(SalesFragment())
-            R.id.mn_sign_out -> toast("Sign Out")
+            R.id.mn_sign_out -> {
+                mainViewModel.signOut
+                changeVisibility(false)
+                invalidateOptionsMenu()
+                initialFragment()
+            }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true

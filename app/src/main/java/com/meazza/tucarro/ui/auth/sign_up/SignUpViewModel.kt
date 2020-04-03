@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.meazza.tucarro.model.User
 import com.meazza.tucarro.repository.AuthRepository
 import com.meazza.tucarro.ui.auth.AuthListener
 import com.meazza.tucarro.util.*
@@ -31,7 +32,7 @@ class SignUpViewModel(private val authRepository: AuthRepository) : ViewModel() 
                         !isValidPassword(password) -> authListener?.onFailure(INVALID_PASSWORD)
                         isValidEmail(email) && isValidPassword(password) -> {
                             authRepository.signUpByEmail(email, password)
-                            authRepository.sendVerificationEmail()
+                            authRepository.addUser(User(name, email))
                             authListener?.onSuccess()
                         }
                     }

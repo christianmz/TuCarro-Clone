@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
+                android:theme="@style/ToolbarColoredBackArrow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +44,6 @@
 
             </FrameLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.navigation.NavigationView
@@ -54,11 +53,10 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header"
+            app:itemBackground="@drawable/drawer_item_background"
             app:itemIconTint="@drawable/drawer_item"
             app:itemTextColor="@drawable/drawer_item"
-            app:itemBackground="@drawable/drawer_item_background"
             app:menu="@menu/menu_drawer" />
-
 
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

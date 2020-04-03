@@ -1,6 +1,5 @@
 package com.meazza.tucarro.network
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 
@@ -19,7 +18,11 @@ object AuthService {
         mAuth.signInWithEmailAndPassword(email, password).await()
     }
 
-    fun sendVerificationEmail() {
+    suspend fun resetPassword(email: String) {
+        mAuth.sendPasswordResetEmail(email).await()
+    }
+
+    /*fun sendVerificationEmail() {
         currentUser?.sendEmailVerification()?.addOnCompleteListener {
             if (it.isSuccessful) {
                 Log.d("EMAIL", "EMAIL HAS BEEN SENT")
@@ -27,9 +30,5 @@ object AuthService {
                 Log.d("EMAIL", "EMAIL HASN'T BEEN SENT")
             }
         }
-    }
-
-    suspend fun resetPassword(email: String) {
-        mAuth.sendPasswordResetEmail(email).await()
-    }
+    }*/
 }

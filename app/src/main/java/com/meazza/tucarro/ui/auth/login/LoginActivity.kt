@@ -36,6 +36,18 @@ class LoginActivity : AppCompatActivity(), AuthListener,
         setToolbar()
     }
 
+    private fun setToolbar() {
+        setSupportActionBar(tb_login)
+        supportActionBar?.title = ""
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun showAlert(message: String) {
+        alert(message) {
+            okButton { it.dismiss() }
+        }.show()
+    }
+
     override fun onSuccess() {
         startActivity(intentFor<MainActivity>().newTask().clearTask())
     }
@@ -47,7 +59,6 @@ class LoginActivity : AppCompatActivity(), AuthListener,
             INVALID_PASSWORD -> showAlert(resources.getString(R.string.invalid_password))
             WRONG_PASSWORD -> showAlert(resources.getString(R.string.wrong_password))
             USER_NOT_FOUND -> showAlert(resources.getString(R.string.user_not_found))
-            CONFIRM_YOUR_EMAIL -> showAlert(resources.getString(R.string.confirm_email))
             LOGIN_ERROR -> showAlert(resources.getString(R.string.login_error))
             else -> showAlert(resources.getString(R.string.error))
         }
@@ -60,17 +71,5 @@ class LoginActivity : AppCompatActivity(), AuthListener,
     override fun openView() {
         val dialog = DialogResetPassword()
         dialog.show(supportFragmentManager, "Dialog Recover Password")
-    }
-
-    private fun setToolbar() {
-        setSupportActionBar(tb_login)
-        supportActionBar?.title = ""
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    private fun showAlert(message: String) {
-        alert(message) {
-            okButton { it.dismiss() }
-        }.show()
     }
 }

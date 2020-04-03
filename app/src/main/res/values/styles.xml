@@ -17,6 +17,7 @@
     </style>
 
     <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/grayDark</item>
         <item name="android:textColorSecondary">@color/grayDark</item>
     </style>
 

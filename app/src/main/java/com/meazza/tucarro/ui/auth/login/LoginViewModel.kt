@@ -5,11 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.meazza.tucarro.network.AuthService
 import com.meazza.tucarro.repository.AuthRepository
 import com.meazza.tucarro.ui.ViewListener
 import com.meazza.tucarro.ui.auth.AuthListener
-import com.meazza.tucarro.util.*
+import com.meazza.tucarro.util.EMPTY_FIELDS
+import com.meazza.tucarro.util.LOGIN_ERROR
+import com.meazza.tucarro.util.USER_NOT_FOUND
+import com.meazza.tucarro.util.WRONG_PASSWORD
 import kotlinx.coroutines.launch
 
 
@@ -30,11 +32,7 @@ class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
             if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
                 try {
                     authRepository.loginByEmail(email, password)
-                    if (AuthService.currentUser!!.isEmailVerified) {
-                        authListener?.onSuccess()
-                    } else {
-                        authListener?.onFailure(CONFIRM_YOUR_EMAIL)
-                    }
+                    authListener?.onSuccess()
                 } catch (e: FirebaseAuthInvalidCredentialsException) {
                     authListener?.onFailure(WRONG_PASSWORD)
                 } catch (e: FirebaseAuthInvalidUserException) {
