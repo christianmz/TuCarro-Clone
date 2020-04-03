@@ -55,7 +55,6 @@ class LoginActivity : AppCompatActivity(), AuthListener,
 
     override fun gotoActivity() {
         startActivity<SignUpActivity>()
-
     }
 
     override fun openView() {

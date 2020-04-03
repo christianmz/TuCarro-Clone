@@ -9,8 +9,11 @@
 
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+
+    <style name="statusBarTransparent" parent="AppTheme">
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="ToolbarColoredBackArrow" parent="AppTheme">
