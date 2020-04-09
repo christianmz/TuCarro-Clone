@@ -27,6 +27,9 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     dataBinding {
         enabled true
     }
@@ -58,9 +61,12 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1"
 
-    implementation "io.coil-kt:coil:0.8.0"
+    implementation "io.coil-kt:coil:0.9.5"
+    implementation 'com.karumi:dexter:6.0.0'
     implementation "org.jetbrains.anko:anko:0.10.8"
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
+    implementation 'com.github.santalu:mask-edittext:1.1.1'
+    implementation 'com.github.BlacKCaT27:CurrencyEditText:2.0.2'
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     testImplementation 'junit:junit:4.13'

@@ -2,7 +2,6 @@ package com.meazza.tucarro.ui.main
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -12,18 +11,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.google.android.material.navigation.NavigationView
 import com.meazza.tucarro.R
 import com.meazza.tucarro.databinding.ActivityMainBinding
 import com.meazza.tucarro.ui.adverts.AdvertsFragment
 import com.meazza.tucarro.ui.auth.login.LoginActivity
-import com.meazza.tucarro.ui.sales.SalesFragment
+import com.meazza.tucarro.ui.new_advert.NewAdvertFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import org.koin.android.ext.android.inject
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var tvName: TextView
     private lateinit var ivPhoto: ImageView
@@ -49,6 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun setNavDrawer() {
+
         ActionBarDrawerToggle(
             this,
             drawer_layout,
@@ -60,7 +59,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawer_layout.addDrawerListener(this)
             syncState()
         }
-        nav_view.setNavigationItemSelectedListener(this)
+
+        nav_view.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.mn_home -> fragmentTransaction(AdvertsFragment())
+                R.id.mn_sales -> fragmentTransaction(NewAdvertFragment())
+                R.id.mn_sign_out -> {
+                    mainViewModel.signOut
+                    changeVisibility(false)
+                    invalidateOptionsMenu()
+                    initialFragment()
+                }
+            }
+            drawer_layout.closeDrawer(GravityCompat.START)
+            true
+        }
     }
 
     private fun initialFragment() {
@@ -99,21 +112,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             changeVisibility(true)
         }
         return super.onPrepareOptionsMenu(menu)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.mn_home -> fragmentTransaction(AdvertsFragment())
-            R.id.mn_sales -> fragmentTransaction(SalesFragment())
-            R.id.mn_sign_out -> {
-                mainViewModel.signOut
-                changeVisibility(false)
-                invalidateOptionsMenu()
-                initialFragment()
-            }
-        }
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
     }
 
     override fun onBackPressed() {

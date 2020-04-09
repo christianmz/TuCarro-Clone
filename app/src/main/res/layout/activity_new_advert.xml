@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.meazza.tucarro.ui.new_advert.NewAdvertViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.new_advert.NewAdvertActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_new_advert"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ToolbarColoredBackArrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_new_advert1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/app_name"
+            android:onClick="@{()-> viewModel.addImage(101)}"
+            app:layout_constraintEnd_toStartOf="@+id/iv_new_advert2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_new_advert"
+            app:srcCompat="@drawable/ic_image_placeholder" />
+
+        <ImageView
+            android:id="@+id/iv_new_advert2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/app_name"
+            android:onClick="@{()-> viewModel.addImage(102)}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_new_advert1"
+            app:layout_constraintEnd_toStartOf="@+id/iv_new_advert3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_new_advert1"
+            app:layout_constraintTop_toTopOf="@+id/iv_new_advert1"
+            app:srcCompat="@drawable/ic_image_placeholder" />
+
+        <ImageView
+            android:id="@+id/iv_new_advert3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/app_name"
+            android:onClick="@{()-> viewModel.addImage(103)}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_new_advert2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_new_advert2"
+            app:layout_constraintTop_toTopOf="@+id/iv_new_advert2"
+            app:srcCompat="@drawable/ic_image_placeholder" />
+
+        <Spinner
+            android:id="@+id/sp_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:entries="@array/year"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/sp_brand"
+            app:layout_constraintTop_toBottomOf="@+id/iv_new_advert3" />
+
+        <Spinner
+            android:id="@+id/sp_brand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:entries="@array/brand"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/sp_year"
+            app:layout_constraintEnd_toStartOf="@+id/sp_year"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sp_year" />
+
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/grayLight"
+            android:ems="10"
+            android:fontFamily="@font/lato_regular"
+            android:hint="@string/title"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:text="@{viewModel.etTitle}"
+            android:textColor="@color/grayDark"
+            app:layout_constraintBottom_toTopOf="@+id/et_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sp_year" />
+
+        <com.blackcat.currencyedittext.CurrencyEditText
+            android:id="@+id/et_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/grayLight"
+            android:ems="10"
+            android:fontFamily="@font/lato_regular"
+            android:hint="@string/price"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:text="@{viewModel.etPrice}"
+            android:textColor="@color/grayDark"
+            app:layout_constraintBottom_toTopOf="@+id/et_phone_number"
+            app:layout_constraintEnd_toEndOf="@+id/et_title"
+            app:layout_constraintStart_toStartOf="@+id/et_title"
+            app:layout_constraintTop_toBottomOf="@+id/et_title" />
+
+        <com.santalu.maskedittext.MaskEditText
+            android:id="@+id/et_phone_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/grayLight"
+            android:ems="10"
+            android:fontFamily="@font/lato_regular"
+            android:hint="@string/phone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:text="@{viewModel.etPhoneNumber}"
+            android:textColor="@color/grayDark"
+            app:layout_constraintBottom_toTopOf="@+id/et_description"
+            app:layout_constraintEnd_toEndOf="@+id/et_price"
+            app:layout_constraintStart_toStartOf="@+id/et_price"
+            app:layout_constraintTop_toBottomOf="@+id/et_price"
+            app:met_mask="(+57) ### ### ## ##" />
+
+        <EditText
+            android:id="@+id/et_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/grayLight"
+            android:ems="10"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="top"
+            android:hint="@string/description"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:minLines="4"
+            android:padding="12dp"
+            android:text="@{viewModel.etDescription}"
+            android:textColor="@color/grayDark"
+            app:layout_constraintBottom_toTopOf="@+id/btn_save_advert"
+            app:layout_constraintEnd_toEndOf="@+id/et_phone_number"
+            app:layout_constraintStart_toStartOf="@+id/et_phone_number"
+            app:layout_constraintTop_toBottomOf="@+id/et_phone_number" />
+
+        <Button
+            android:id="@+id/btn_save_advert"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="@font/lato_bold"
+            android:onClick="@{() -> viewModel.saveAdvert()}"
+            android:text="@string/to_post"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/et_description"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/et_description"
+            app:layout_constraintTop_toBottomOf="@+id/et_description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

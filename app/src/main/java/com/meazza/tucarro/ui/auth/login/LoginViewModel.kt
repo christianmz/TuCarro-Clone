@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.meazza.tucarro.repository.AuthRepository
-import com.meazza.tucarro.ui.ViewListener
+import com.meazza.tucarro.ui.ActivityListener
 import com.meazza.tucarro.ui.auth.AuthListener
 import com.meazza.tucarro.util.EMPTY_FIELDS
 import com.meazza.tucarro.util.LOGIN_ERROR
@@ -21,7 +21,7 @@ class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
     var etPassword = MutableLiveData<String>()
 
     var authListener: AuthListener? = null
-    var viewListener: ViewListener? = null
+    var viewListener: ActivityListener? = null
 
     fun btnLogin() {
 
@@ -52,6 +52,6 @@ class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
     }
 
     fun tvRecoverPassword() {
-        viewListener?.openView()
+        viewListener?.openDialog()
     }
 }

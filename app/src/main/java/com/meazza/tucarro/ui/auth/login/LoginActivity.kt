@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.meazza.tucarro.R
 import com.meazza.tucarro.databinding.ActivityLoginBinding
-import com.meazza.tucarro.ui.ViewListener
+import com.meazza.tucarro.ui.ActivityListener
 import com.meazza.tucarro.ui.auth.AuthListener
 import com.meazza.tucarro.ui.auth.reset_password.DialogResetPassword
 import com.meazza.tucarro.ui.auth.sign_up.SignUpActivity
@@ -16,7 +16,7 @@ import org.jetbrains.anko.*
 import org.koin.android.ext.android.inject
 
 class LoginActivity : AppCompatActivity(), AuthListener,
-    ViewListener {
+    ActivityListener {
 
     private val loginViewModel by inject<LoginViewModel>()
 
@@ -68,8 +68,11 @@ class LoginActivity : AppCompatActivity(), AuthListener,
         startActivity<SignUpActivity>()
     }
 
-    override fun openView() {
+    override fun openDialog() {
         val dialog = DialogResetPassword()
         dialog.show(supportFragmentManager, "Dialog Recover Password")
+    }
+
+    override fun addImage(requestCode: Int) {
     }
 }
