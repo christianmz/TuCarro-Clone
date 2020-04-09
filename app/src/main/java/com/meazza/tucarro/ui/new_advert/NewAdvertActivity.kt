@@ -59,9 +59,6 @@ class NewAdvertActivity : AppCompatActivity(), ActivityListener {
     override fun gotoActivity() {
     }
 
-    override fun openDialog() {
-    }
-
     override fun addImage(requestCode: Int) {
         startActivityForResult(
             Intent(
@@ -69,5 +66,8 @@ class NewAdvertActivity : AppCompatActivity(), ActivityListener {
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             ), requestCode
         )
+    }
+
+    override fun openDialog() {
     }
 }
